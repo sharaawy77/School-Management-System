@@ -1,0 +1,91 @@
+﻿@model School_Management_System.ViewModels.TeacherVM
+
+@{
+    ViewData["Title"] = "Create";
+    SelectList coursesLst = new SelectList( ViewBag.CourseId,"CourseId","Name");
+}
+
+<h1>Create</h1>
+
+<h4>TeacherVM</h4>
+<hr />
+<form asp-action="Create" enctype="multipart/form-data" >
+
+<div class="row">
+
+    <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label" hidden></label>
+                <input asp-for="CourseId" class="form-control" id="CI" hidden />
+                <span asp-validation-for="CourseId" class="text-danger" hidden></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label"></label>
+                <select id="C" onchange="document.getElementById('CI').value=this.value" class="form-control"   asp-items="coursesLst" >
+                    <option >Choose Specailsty....</option>
+                </select>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MobileNum" class="control-label"></label>
+                <input asp-for="MobileNum" class="form-control" />
+                <span asp-validation-for="MobileNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirDate" class="control-label"></label>
+                <input asp-for="BirDate" class="form-control" />
+                <span asp-validation-for="BirDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="JoinDate" class="control-label"></label>
+                <input asp-for="JoinDate" class="form-control" />
+                <span asp-validation-for="JoinDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+    </div>
+    <div class="col-md-4">
+
+        <div class="form-group align-content-end" >
+                <label asp-for="ProfilePic" class="control-label w-100"></label>
+                <img id="PP" src="~/Uploads/Avatar.png" alt="Pic" style="width:390px;height:390px" />
+                <br /><br />
+                <input asp-for="ProfilePic" type="file" class="form-control" onchange="document.getElementById('PP').src=window.URL.createObjectURL(this.files[0])" />
+                <span asp-validation-for="ProfilePic" class="text-danger"></span>
+         </div>
+    </div>
+</div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

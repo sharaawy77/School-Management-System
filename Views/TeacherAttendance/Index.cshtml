@@ -1,0 +1,49 @@
+﻿@model IEnumerable<School_Management_System.ViewModels.TeacherAttendanceVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attendant)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attendant)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.AttendanceId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.AttendanceId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.AttendanceId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
